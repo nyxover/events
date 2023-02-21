@@ -1,0 +1,46 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Réveil",
+      "time": "07:00",
+      "type": "Routine"
+    },
+    {
+      "id": 2,
+      "title": "Petit déjeuner",
+      "time": "08:00",
+      "type": "Repas"
+    },
+    {
+      "id": 5,
+      "title": "Cours de Yoga",
+      "time": "14:00",
+      "type": "Loisir"
+    },
+    {
+      "id": 7,
+      "title": "Dîner",
+      "time": "19:00",
+      "type": "Repas"
+    },
+    {
+      "title": "Réveil",
+      "time": "07:00",
+      "type": "Routine",
+      "id": 10
+    },
+    {
+      "id": 17,
+      "title": "qsdqsdsqdqsd",
+      "time": "16:04",
+      "type": "Repas"
+    },
+    {
+      "id": 19,
+      "title": "fdgdfg",
+      "time": "20:51",
+      "type": "Repas"
+    }
+  ]
+}
