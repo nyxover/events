@@ -1,19 +1,43 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Event } from '../../Model/eventmodel';
 import { EventsService } from '../../services/events.service';
+
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent {
-  events: Event[] = [];
+export class CalendarComponent implements OnInit {
+  public events: Event[] = [];
 
-  constructor(private eventsService: EventsService) {}
+  eventToUpdate: Event;
+  event: any;
 
-  ngOnInit() {
-    this.eventsService.getEvents()
-      .subscribe(events => this.events = events);
+
+
+  constructor(private eventsService: EventsService) {
+    this.eventToUpdate = {id: 0, title: '', time: '', type: ''}; // initialiser la variable avec des valeurs par défaut
   }
+  onEditEvent(event: Event) {
+    this.eventToUpdate = event; // mettre à jour la variable avec l'événement sélectionné
+  }
+
+  onSubmitForm() {
+    // mettre à jour l'événement sélectionné avec les nouvelles valeurs
+    // ...
+  }
+
+  ngOnInit(): void {
+    this.eventsService.getEvents().subscribe(events => {
+      this.events = events;
+    });
+  }
+
+  deleteEvent(id: number): void {
+    this.eventsService.deleteEvent(id).subscribe();
+  }
+
+
 }

@@ -7,11 +7,14 @@ import { CalendarComponent } from './composants/calendar/calendar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventFormComponent } from './composants/event-form/event-form.component'
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventFormComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
