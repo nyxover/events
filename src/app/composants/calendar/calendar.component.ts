@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event } from '../../Model/eventmodel';
 import { EventsService } from '../../services/events.service';
-
-
 
 @Component({
   selector: 'app-calendar',
@@ -12,22 +10,9 @@ import { EventsService } from '../../services/events.service';
 export class CalendarComponent implements OnInit {
   public events: Event[] = [];
 
-  eventToUpdate: Event;
-  event: any;
+  eventToUpdate: Event = { id: 0, title: '', time: '', type: '' };
 
-
-
-  constructor(private eventsService: EventsService) {
-    this.eventToUpdate = {id: 0, title: '', time: '', type: ''}; // initialiser la variable avec des valeurs par défaut
-  }
-  onEditEvent(event: Event) {
-    this.eventToUpdate = event; // mettre à jour la variable avec l'événement sélectionné
-  }
-
-  onSubmitForm() {
-    // mettre à jour l'événement sélectionné avec les nouvelles valeurs
-    // ...
-  }
+  constructor(private eventsService: EventsService) {}
 
   ngOnInit(): void {
     this.eventsService.getEvents().subscribe(events => {
@@ -35,9 +20,26 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  deleteEvent(id: number): void {
-    this.eventsService.deleteEvent(id).subscribe();
+  onEditEvent(event: Event) {
+    console.log("Evénement sélectionné : ", event);
+    this.eventToUpdate = event;
+    console.log("Valeur de eventToUpdate : ", this.eventToUpdate);
   }
 
+  onSubmitForm() {
+    // Mettre à jour l'événement sélectionné avec les nouvelles valeurs
+    console.log("Valeur de eventToUpdate avant mise à jour : ", this.eventToUpdate);
+    const index = this.events.findIndex(event => event.id === this.eventToUpdate.id);
+    if (index !== -1) {
+      this.events[index] = { ...this.eventToUpdate };
+    }
+    console.log("Valeur de eventToUpdate après mise à jour : ", this.eventToUpdate);
+    console.log("Evénements après mise à jour : ", this.events);
+  }
 
+  deleteEvent(id: number): void {
+    this.eventsService.deleteEvent(id).subscribe(() => {
+      this.events = this.events.filter(event => event.id !== id);
+    });
+  }
 }

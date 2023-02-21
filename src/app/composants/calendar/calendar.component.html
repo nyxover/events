@@ -20,7 +20,7 @@
     <td>{{ event.type }}</td>
     <td>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal">Modifier</button>&nbsp;
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="onEditEvent(event)">Modifier</button>&nbsp;
 
       <button class="btn btn-success" (click)="deleteEvent(event.id)">Supprimer</button>    </td>
   </tr>
@@ -41,22 +41,31 @@
         <form (ngSubmit)="onSubmitForm()">
           <div class="mb-3">
             <label for="FormControlInputTitle" class="form-label">Titre</label>
-            <input type="text" class="form-control" id="FormControlInputTitle" placeholder="Titre" [(ngModel)]="eventToUpdate.title">
+            <input type="text" class="form-control" id="FormControlInputTitle" name="title" placeholder="Titre" [(ngModel)]="eventToUpdate.title">
           </div>
           <div class="mb-3">
             <label for="FormControlInputTime" class="form-label">Heure</label>
-            <input type="time" class="form-control" id="FormControlInputTime" placeholder="Heure" [(ngModel)]="eventToUpdate.time">
+            <input type="time" class="form-control" id="FormControlInputTime" name="time" placeholder="Heure" [(ngModel)]="eventToUpdate.time">
           </div>
+          <div class="mb-3">
+            <label for="FormControlInputType" class="form-label">Type</label>
+            <select class="form-control" id="FormControlInputType" name="type" [(ngModel)]="eventToUpdate.type" required>
+              <option value="Routine">Routine</option>
+              <option value="Repas">Repas</option>
+              <option value="Travail">Travail</option>
+              <option value="Loisir">Loisir</option>
+            </select>
 
-        <div class="mb-3">
-          <label for="exampleFormControlInputRoutine" class="form-label">Type de routine</label>
-          <input type="routine" class="form-control" id="exampleFormControlInputRoutine" placeholder="routine">
-        </div>
+
+
+
+
+          </div>
+          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>
