@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './composants/calendar/calendar.component';
 import {HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

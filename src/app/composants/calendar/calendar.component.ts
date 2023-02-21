@@ -1,22 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-
-
-interface CALENDARS {
-  id: Number;
-  title: String;
-  time: String;
-  type: String;
-}
+import { Component } from '@angular/core';
+import { Event } from '../../Model/eventmodel';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit{
-  constructor() {}
+export class CalendarComponent {
+  events: Event[] = [];
 
-  ngOnInit(): void {
+  constructor(private eventsService: EventsService) {}
+
+  ngOnInit() {
+    this.eventsService.getEvents()
+      .subscribe(events => this.events = events);
   }
-
 }
