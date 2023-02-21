@@ -8,6 +8,9 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  filterType: string = '';
+  startTime: string = '';
+  endTime: string = '';
   public events: Event[] = [];
 
   eventToUpdate: Event = { id: 0, title: '', time: '', type: '' };

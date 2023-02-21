@@ -3,6 +3,36 @@
 <div class="container-fluid">
   <h1>Liste Evenement</h1>
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="filterType">Type</label>
+      <select class="form-control" id="filterType" name="filterType" [(ngModel)]="filterType">
+        <option value="">Tous</option>
+        <option value="Routine">Routine</option>
+        <option value="Repas">Repas</option>
+        <option value="Travail">Travail</option>
+        <option value="Loisir">Loisir</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="startTime">Heure de début</label>
+      <input type="time" class="form-control" id="startTime" name="startTime" [(ngModel)]="startTime">
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="endTime">Heure de fin</label>
+      <input type="time" class="form-control" id="endTime" name="endTime" [(ngModel)]="endTime">
+    </div>
+  </div>
+</div>
+
 <table class="table mt-4">
   <thead>
   <tr>
@@ -13,7 +43,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let event of events">
+  <tr *ngFor="let event of events | filter: filterType: startTime: endTime">
     <td>{{ event.id }}</td>
     <td>{{ event.title }}</td>
     <td>{{ event.time }}</td>

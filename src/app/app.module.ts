@@ -10,11 +10,13 @@ import {MatTableModule} from '@angular/material/table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventFormComponent } from './composants/event-form/event-form.component'
 import {FormsModule} from "@angular/forms";
+import { FilterPipe } from './filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    EventFormComponent
+    EventFormComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
